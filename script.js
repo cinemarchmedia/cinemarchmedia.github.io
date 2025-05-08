@@ -177,8 +177,8 @@ function loadAnalysisArticles() {
 document.addEventListener('DOMContentLoaded', loadAnalysisArticles);
 
 // YouTube API Configuration
-const YOUTUBE_API_KEY = 'AIzaSyDcTdbVWmDtETNhnZ1rpyuWj1xEnrLszS8'; // YouTube Data API key
-const CHANNEL_ID = 'UCmVkWDYVJxgxHWCzFUH5wXg'; // The Marching Revolution channel ID
+const YOUTUBE_API_KEY = ''; // YouTube Data API key
+const CHANNEL_ID = ''; // The Marching Revolution channel ID
 
 // Function to format date
 function formatDate(isoString) {
