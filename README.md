@@ -1,9 +1,5 @@
 # CineMarch Media Website
 
-[![YouTube - The Marching Revolution](https://img.shields.io/youtube/channel/subscribers/UCYVxJDxwNxWJcKhqHq_UIVA?style=for-the-badge&logo=youtube&label=TMR)](https://youtube.com/@themarchingrevolution)
-[![YouTube - Marxists at the Movies](https://img.shields.io/youtube/channel/subscribers/UCYVxJDxwNxWJcKhqHq_UIVA?style=for-the-badge&logo=youtube&label=MATM)](https://youtube.com/@marxistsatthemovies)
-[![Website Status](https://img.shields.io/website?url=https%3A%2F%2Fcinemarchmedia.com&style=for-the-badge)](https://cinemarchmedia.com)
-
 A modern, responsive website for CineMarch Media, LLC - a multimedia company producing revolutionary cinema analysis content across multiple platforms.
 
 ## 🎯 Overview
