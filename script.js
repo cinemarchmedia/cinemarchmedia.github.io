@@ -269,4 +269,123 @@ window.addEventListener('scroll', () => {
     } else {
         backToTopButton.classList.remove('visible');
     }
+});
+
+// DOM Elements
+document.addEventListener('DOMContentLoaded', () => {
+    const backToTop = document.getElementById('backToTop');
+    const sections = document.querySelectorAll('.section');
+    const showCards = document.querySelectorAll('.show-card');
+    const toggleButtons = document.querySelectorAll('.toggle-description');
+    const contactForm = document.getElementById('contactForm');
+
+    // Back to Top Button
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 500) {
+            backToTop.classList.add('visible');
+        } else {
+            backToTop.classList.remove('visible');
+        }
+    });
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+
+    // Section animations on scroll
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, observerOptions);
+
+    sections.forEach(section => {
+        sectionObserver.observe(section);
+    });
+
+    // Show card description toggle
+    toggleButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const card = button.closest('.show-card');
+            const description = card.querySelector('.show-description');
+            
+            button.classList.toggle('active');
+            description.classList.toggle('active');
+        });
+    });
+
+    // Contact form handling
+    if (contactForm) {
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const formData = new FormData(contactForm);
+            const data = Object.fromEntries(formData);
+            
+            try {
+                // Here you would typically send the data to your backend
+                console.log('Form submitted:', data);
+                
+                // Clear form and show success message
+                contactForm.reset();
+                alert('Thank you for your message! We will get back to you soon.');
+            } catch (error) {
+                console.error('Error submitting form:', error);
+                alert('There was an error sending your message. Please try again later.');
+            }
+        });
+    }
+
+    // Mobile navigation toggle
+    const mobileNavToggle = document.createElement('button');
+    mobileNavToggle.classList.add('mobile-nav-toggle');
+    mobileNavToggle.setAttribute('aria-label', 'Toggle navigation');
+    document.querySelector('.nav-container').prepend(mobileNavToggle);
+
+    mobileNavToggle.addEventListener('click', () => {
+        document.querySelector('.navbar').classList.toggle('active');
+    });
+
+    // Close mobile nav when clicking outside
+    document.addEventListener('click', (e) => {
+        const navbar = document.querySelector('.navbar');
+        const isNavbarActive = navbar.classList.contains('active');
+        const isClickInsideNav = navbar.contains(e.target);
+        const isToggleButton = e.target.classList.contains('mobile-nav-toggle');
+
+        if (isNavbarActive && !isClickInsideNav && !isToggleButton) {
+            navbar.classList.remove('active');
+        }
+    });
+
+    // Add active class to current nav link
+    const currentPath = window.location.pathname;
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        if (link.getAttribute('href') === currentPath) {
+            link.classList.add('active');
+        }
+    });
+});
+
+// Floating elements animation
+const floatingElements = document.querySelectorAll('.floating-element');
+floatingElements.forEach((element, index) => {
+    element.style.animationDelay = `${index * 2}s`;
 }); 
