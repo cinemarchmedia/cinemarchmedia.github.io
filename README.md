@@ -28,43 +28,32 @@ A media analysis podcast exploring how art reveals deeper truths about our world
 ## 🛠 Technical Stack
 
 ### Frontend
+- Static site with GitHub Pages
 - HTML5 with semantic markup
-- CSS3 with custom properties and Flexbox/Grid
-- Vanilla JavaScript (ES2022+)
+- CSS3 with custom properties
 - Responsive Design with Mobile-First approach
-
-### APIs & Integration
-- YouTube Data API v3
-- TikTok Embed API
-- Spotify Web Playback SDK
 
 ### Development Tools
 - Git for version control
-- VS Code with ESLint and Prettier
-- Chrome DevTools for debugging
-- PageSpeed Insights for performance
+- VS Code with Markdown support
+- GitHub Actions for deployment
+- Cloudflare for DNS and SSL
 
 ## 📁 Project Structure
 
 ```
 CinemarchMedia/
-├── assets/
-│   ├── images/         # Optimized images and graphics
-│   ├── icons/          # SVG icons and favicons
-│   └── fonts/          # Web fonts and typography
-├── css/
-│   ├── styles.css      # Global styles
-│   ├── components/     # Component-specific styles
-│   └── variables.css   # CSS custom properties
-├── js/
-│   ├── main.js         # Main JavaScript entry
-│   ├── api/            # API integration modules
-│   ├── components/     # UI components
-│   └── utils/          # Helper functions
-├── pages/
-│   ├── core-values.html
-│   └── privacy.html
 ├── index.html          # Main landing page
+├── core-values.html    # Core values and methodology
+├── brand-summary.html  # Brand information
+├── privacy.html        # Privacy policy
+├── styles.css         # Global styles
+├── script.js          # Main JavaScript
+├── assets/
+│   ├── CinemarchLogo.png
+│   ├── CinemarchLogoWhite.png
+│   ├── MarxistsattheMoviesLogo.jpg
+│   └── TheMarchingRevolutionLogo.png
 └── README.md          # Project documentation
 ```
 
@@ -99,28 +88,71 @@ The website implements a mobile-first approach with strategic breakpoints:
 
 ## 🔧 Setup Instructions
 
-1. Clone the repository:
+### GitHub Pages & Cloudflare Setup
+
+1. Configure GitHub Pages:
    ```bash
-   git clone https://github.com/cinemarchmedia/website.git
-   cd website
+   # Ensure your repository is public
+   git checkout main
    ```
+   - Go to repository Settings > Pages
+   - Set source branch to `main`
+   - Set folder to `/ (root)`
+   - Save changes
 
-2. Configure API Keys:
-   - Create a `.env` file in the root directory
-   - Add your YouTube Data API key:
+2. Configure Custom Domain:
+   - Create a file named `CNAME` in your repository root
+   - Add your domain: `cinemarchmedia.com`
+
+3. Cloudflare Integration:
+   - Create a Cloudflare account
+   - Add your site to Cloudflare
+   - Update nameservers at your domain registrar
+   - In Cloudflare DNS settings, add:
      ```
-     YOUTUBE_API_KEY=your_api_key_here
+     Type    Name               Content
+     A       @                  185.199.108.153
+     A       @                  185.199.109.153
+     A       @                  185.199.110.153
+     A       @                  185.199.111.153
+     CNAME   www               cinemarchmedia.github.io
      ```
+   - Enable SSL/TLS encryption (Full)
+   - Enable Always Use HTTPS
 
-3. Local Development:
-   - Use a local server (e.g., Live Server VS Code extension)
-   - Open `index.html` in your browser
-   - Enable DevTools for debugging
+### Managing Content
 
-4. API Integration:
-   - Update `js/api/youtube.js` with your API key
-   - Test API endpoints using the browser console
-   - Monitor API quota usage in Google Cloud Console
+1. Main Page (index.html):
+   - Update show information and featured content
+   - Modify hero section content
+   - Update social media links
+   - Edit call-to-action sections
+
+2. Core Values (core-values.html):
+   - Update mission statement
+   - Modify methodology section
+   - Edit team information
+   - Update brand principles
+
+3. Brand Summary (brand-summary.html):
+   - Update brand guidelines
+   - Modify color schemes
+   - Edit typography information
+   - Update logo usage guidelines
+
+4. Privacy Policy (privacy.html):
+   - Update policy content
+   - Modify terms of service
+   - Edit contact information
+   - Update last modified date
+
+### Content Guidelines
+
+- Use brand logos in their original resolution
+- Maintain consistent styling using styles.css
+- Follow HTML structure in existing pages
+- Keep JavaScript functionality intact in script.js
+- Test all pages locally before pushing changes
 
 ## 🔄 Future Updates
 
